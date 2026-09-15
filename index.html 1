@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniels Travel Strategist | Budget-Smart Travel Planning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0a4d68 0%, #088395 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            transition: opacity 0.3s;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0a4d68 0%, #088395 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #088395;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: none;
+            margin-right: 15px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .cta-button-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #088395;
+        }
+
+        h3 {
+            color: #088395;
+            margin-bottom: 15px;
+        }
+
+        .about {
+            background: #f0f8ff;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .stat {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #088395;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .price-tag {
+            font-size: 28px;
+            color: #088395;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .destinations {
+            background: #f0f8ff;
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .destination-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .destination-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .destination-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #088395;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 15px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #088395;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #0a4d68 0%, #088395 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .blog-content p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            background: #f0f8ff;
+            padding: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #e0f0ff;
+        }
+
+        .faq-answer {
+            padding: 20px;
+            color: #666;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #0a4d68 0%, #088395 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .contact-method {
+            background: rgba(255,255,255,0.1);
+            padding: 20px 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-method a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+
+        .contact-method a:hover {
+            opacity: 0.8;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group button {
+            background: white;
+            color: #088395;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+            font-size: 16px;
+        }
+
+        .form-group button:hover {
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: #0a4d68;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .instagram-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .instagram-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 32px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                margin-left: 15px;
+                font-size: 13px;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Daniels Travel Strategist</div>
+            <div>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#destinations">Destinations</a>
+                <a href="#blog">Tips</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Your Adventure Starts Here</h1>
+                <p>I've traveled to 20+ countries and planned 1000+ destinations. Now I help YOU experience authentic travel without breaking the bank.</p>
+                <p style="font-size: 16px; opacity: 0.9;">Peru • Panama • Mexico • Europe • Caribbean</p>
+                <a href="#contact" class="cta-button">Start Planning</a>
+                <a href="#services" class="cta-button cta-button-secondary">Learn More</a>
+            </div>
+            <div class="hero-image">
+                <img src="profile.jpg" alt="Jordan Daniels">
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Countries Available</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Countries Visited</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Budget-Optimized</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Who I Am</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Travel Strategist & Adventure Planner</h3>
+                    <p>I'm Jordan Daniels, a 24-year-old social worker and travel strategist based in Baltimore. Over the last few months, I've traveled across multiple continents, explored 20+ countries, and discovered the art of authentic travel on a real budget.</p>
+                    <p>I don't just plan trips—I create experiences. From climbing Machu Picchu to exploring Rome's ancient streets to finding the best street tacos in Panama City, I know how to make every moment count.</p>
+                    <p>I started helping my coworkers plan their trips, and they loved it. So I decided to scale this: I'm now offering professional travel strategy services for young professionals who want to explore the world without the stress or the credit card debt.</p>
+                    <p style="margin-top: 20px; font-weight: bold; color: #088395;">Let's build your dream adventure together.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #0a4d68 0%, #088395 100%); height: 400px; border-radius: 10px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="container">
+        <h2>Services & Pricing</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>🗺️ Trip Strategy Consultation</h3>
+                <p>Get a personalized itinerary built around YOUR interests, budget, and travel style. No generic plans here.</p>
+                <div class="price-tag">$75-150</div>
+                <p style="font-size: 14px; color: #999;">Per consultation</p>
+            </div>
+            <div class="service-card">
+                <h3>💰 Booking Commission</h3>
+                <p>I find and handle your flights, hotels, and activities. I make 5-10% commission on bookings. You still save money.</p>
+                <div class="price-tag">5-10%</div>
+                <p style="font-size: 14px; color: #999;">Of booking total</p>
+            </div>
+            <div class="service-card">
+                <h3>📋 Full Trip Coordination</h3>
+                <p>Complete package: strategy, bookings, day-by-day planning, local tips. I handle everything so you just show up and adventure.</p>
+                <div class="price-tag">Custom</div>
+                <p style="font-size: 14px; color: #999;">Based on trip scope</p>
+            </div>
+            <div class="service-card">
+                <h3>🌍 Budget Optimization</h3>
+                <p>Find the best flight deals, affordable hostels, and authentic local food. Travel far, spend less.</p>
+                <div class="price-tag">Included</div>
+                <p style="font-size: 14px; color: #999;">In all services</p>
+            </div>
+            <div class="service-card">
+                <h3>🏃 Quick Turnaround</h3>
+                <p>Planning a last-minute trip? I can build you a solid itinerary in days, not weeks.</p>
+                <div class="price-tag">Express</div>
+                <p style="font-size: 14px; color: #999;">+20% rush fee</p>
+            </div>
+            <div class="service-card">
+                <h3>✨ Authentic Experiences</h3>
+                <p>Beach parties or peaceful temples. Adventure or culture. I plan what YOU actually want, not what Instagram says.</p>
+                <div class="price-tag">Always</div>
+                <p style="font-size: 14px; color: #999;">My specialty</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="destinations" class="destinations">
+        <div class="container">
+            <h2>Places I've Been</h2>
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <h3>🇪🇺 Europe</h3>
+                    <p><strong>Spain:</strong> Madrid, Barcelona, Sitges, Costa Brava<br><strong>Italy:</strong> Rome, Florence, Pisa<br><strong>Greece:</strong> Athens, Agisti, Aegina<br><strong>Switzerland:</strong> Zurich, Geneva<br><strong>Plus:</strong> Netherlands, France, UK</p>
+                </div>
+                <div class="destination-card">
+                    <h3>🏝️ Caribbean & Central America</h3>
+                    <p><strong>Islands:</strong> Jamaica, Bahamas, Dominican Republic<br><strong>Central America:</strong> Belize, Guatemala<br><strong>South America:</strong> Cartagena, Colombia</p>
+                </div>
+                <div class="destination-card">
+                    <h3>🏔️ South America</h3>
+                    <p><strong>Peru:</strong> Machu Picchu, Cusco, Huacachina, Lima<br><strong>Panama:</strong> Casco Viejo, Panama Canal</p>
+                </div>
+                <div class="destination-card">
+                    <h3>🌮 North America</h3>
+                    <p><strong>Mexico:</strong> Cancun, Isla Mujeres, Playa del Carmen</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 40px; color: #088395; font-weight: bold;">And 150+ more countries available for planning!</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>What People Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-text">"Jordan made planning our Peru trip so easy. The itinerary was perfect, the budget was solid, and we actually had time to relax instead of stressing about logistics."</div>
+                <div class="testimonial-author">— Coworker, Baltimore</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-text">"I've never traveled internationally before. Jordan walked me through everything and now I'm booked for an amazing trip to Mexico. Best decision ever."</div>
+                <div class="testimonial-author">— First-time traveler</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-text">"The travel tips alone saved me hundreds. But having someone who actually knows these places? That's priceless. I felt like I had a friend in every city."</div>
+                <div class="testimonial-author">— Adventure seeker</div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 40px; font-style: italic; color: #999;">More testimonials coming as I help more travelers!</p>
+    </section>
+
+    <section id="blog" class="container">
+        <h2>Travel Tips & Insights</h2>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="blog-image">✈️</div>
+                <div class="blog-content">
+                    <h3>Budget Flight Hacking</h3>
+                    <p>How to find flights under $500 internationally. The tools, the timing, and the tricks that actually work.</p>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-image">🏨</div>
+                <div class="blog-content">
+                    <h3>Hostel vs Airbnb</h3>
+                    <p>When to book what. Why hostels aren't just for backpackers. The real cost comparison that matters.</p>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-image">🍽️</div>
+                <div class="blog-content">
+                    <h3>Street Food Guide</h3>
+                    <p>How to eat authentic food in any country without getting sick. Local spots, safety tips, and flavor.</p>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-image">🎒</div>
+                <div class="blog-content">
+                    <h3>Packing Smart</h3>
+                    <p>What actually matters in your suitcase. Multi-climate packing. How to travel light and look good.</p>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-image">🗺️</div>
+                <div class="blog-content">
+                    <h3>Itinerary Building 101</h3>
+                    <p>The system I use to build perfect itineraries. Timing, logistics, and how to fit it all in.</p>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-image">🏔️</div>
+                <div class="blog-content">
+                    <h3>Adventure vs Comfort</h3>
+                    <p>How to balance pushing yourself with actually enjoying your trip. Real experiences without burnout.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>How much does trip planning cost?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>I offer flexible pricing: $75-150 for a consultation/custom itinerary, or 5-10% commission if I handle bookings. For a full trip coordination, we can work out custom pricing. Your first consultation is just a conversation—no pressure, no hidden fees.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>How far in advance do I need to book?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Ideally 2-3 months for international trips to get the best flight deals. But I also do quick turnarounds—last-minute trips are possible with a rush fee. Even 2 weeks out, I can build something solid.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>What's your budget range?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>I specialize in budget-smart travel. Most trips I plan fall in the $800-2,000 range per person, but I can work with less or more. The sweet spot is under $1,500 for a solid international trip with flights, hotels, and activities included.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Can you plan trips for groups?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Absolutely. I specialize in group trips. The more people, the better deals I can negotiate. Contact me for group pricing and coordination.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>How do you handle bookings?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>I find the best flights, hotels, and activities and send you links to book yourself, or I can handle the bookings directly. You're always in control. All reservations are in your name, so you own the bookings completely.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>What if my plans change?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Life happens. I build flexibility into itineraries and can adjust on the fly. We'll work through changes together. The goal is YOUR perfect trip, not a rigid schedule.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Do you do visa help?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>I provide info and guidance on visa requirements for destinations. For complex visas, I recommend connecting with visa services. But I'll make sure you know what you need before you travel.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>How do I get started?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Easy—just DM me on Instagram @danielstravelstrategist or fill out the form below. Tell me where you want to go, when, and your budget. We'll have a quick chat and build your perfect itinerary from there.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Ready to Plan Your Adventure?</h2>
+            <p>Let's talk about where you want to go and how to get you there.</p>
+            
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <p>📱 Instagram</p>
+                    <a href="https://instagram.com/danielstravelstrategist" target="_blank">@danielstravelstrategist</a>
+                </div>
+                <div class="contact-method">
+                    <p>💌 Email</p>
+                    <a href="mailto:jordanwdaniels12@gmail.com">jordanwdaniels12@gmail.com</a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Where do you want to go?</label>
+                        <input type="text" name="destination" placeholder="e.g., Peru, Thailand, Europe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>When are you thinking?</label>
+                        <input type="text" name="date" placeholder="e.g., September 2026" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Budget (optional)</label>
+                        <input type="text" name="budget" placeholder="e.g., $1,000-1,500 per person">
+                    </div>
+                    <div class="form-group">
+                        <label>Tell me about your trip idea</label>
+                        <textarea name="message" placeholder="What kind of experience are you looking for?" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Send My Inquiry</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Daniels Travel Strategist. Adventure Awaits. 🌊</p>
+        <p style="margin-top: 10px; font-size: 14px;">
+            Follow on Instagram: <a href="https://instagram.com/danielstravelstrategist" class="instagram-link">@danielstravelstrategist</a>
+        </p>
+    </footer>
+
+    <script>
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            answer.classList.toggle('active');
+            element.querySelector('span:last-child').textContent = answer.classList.contains('active') ? '−' : '+';
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const destination = formData.get('destination');
+            const date = formData.get('date');
+            const budget = formData.get('budget');
+            const message = formData.get('message');
+
+            const subject = `Travel Inquiry from ${name}`;
+            const body = `Name: ${name}\nEmail: ${email}\n\nDestination: ${destination}\nWhen: ${date}\nBudget: ${budget || 'Not specified'}\n\nMessage:\n${message}`;
+
+            const mailtoLink = `mailto:jordanwdaniels12@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            window.location.href = mailtoLink;
+            
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
